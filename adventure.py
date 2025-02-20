@@ -121,7 +121,7 @@ def enter_dungeon(player_stats, inventory, dungeon_rooms, clues):
             for clue in selected_clues:
                 clues = find_clue(clues, clue)
             if "staff_of_wisdom" in inventory:
-                print("You understand the meaning of the clues and can now bypass a puzzle challenge in one of the other rooms")
+                print("You understand the clues and can now bypass a puzzle challenge")
             bypass_puzzle = True
     return player_stats, inventory, clues
 
@@ -142,7 +142,7 @@ def discover_artifact(player_stats, artifacts, artifact_name):
         print("You found nothing of interest.")
 
     return player_stats, artifacts
-        
+
 def combat_encounter(player_stats, monster_health, has_treasure=False):
     """runs combat encounter"""
     while player_stats["health"] > 0 and monster_health > 0:
@@ -160,7 +160,7 @@ def combat_encounter(player_stats, monster_health, has_treasure=False):
 def find_clue(clues, new_clue):
     if new_clue not in clues:
         clues.add(new_clue)   ## used add function to put new items in clue set
-        print(f"You found a new clue: {new_clue}")
+        print(f"You discovered a new clue: {new_clue}")
     else:
         print("You already know this clue.")
     return clues
@@ -233,7 +233,6 @@ def main():
 
     has_treasure = random.choice([True, False])
 
-    bypass_puzzle = False
 
     display_player_status(player_stats)
 
