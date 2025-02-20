@@ -126,6 +126,7 @@ def enter_dungeon(player_stats, inventory, dungeon_rooms, clues):
     return player_stats, inventory, clues
 
 def discover_artifact(player_stats, artifacts, artifact_name):
+    """ deals with artifacts and their effects """
     if artifact_name in artifacts:
         description = artifacts[artifact_name]["description"]
         print(description)
@@ -156,8 +157,11 @@ def combat_encounter(player_stats, monster_health, has_treasure=False):
     if player_stats["health"] <= 0:
         print("Game Over!")
         return False
+    else:
+        return False
 
 def find_clue(clues, new_clue):
+    """ adds clues to clues """
     if new_clue not in clues:
         clues.add(new_clue)   ## used add function to put new items in clue set
         print(f"You discovered a new clue: {new_clue}")
@@ -295,4 +299,4 @@ def main():
                 print("No clues.")
 
 if __name__ == "__main__":
-    main() 
+    main()
